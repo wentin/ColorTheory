@@ -3,10 +3,50 @@ body {
 	margin: 0;
 	padding: 0;
 }
-div {
+.clr {
+	clear: both;
+}
+#levelOneWrapper {
+	margin: 30px;
+	float: left;
+}
+#levelOneWrapper div {
 	float: left;
 	margin: 0;
-	width: 200px;
-	height: 200px;
+	width: 70px;
+	height: 35px;
 	background-color: #cccccc;
+	position: relative;
+}
+#levelOneWrapper div::before {
+	content: '';
+	position: absolute;
+	height: 5px;
+	background-color: rgba(0,0,0,0.15);
+	bottom: 0;
+	z-index: 2;
+	display: block;
+	width: 100%;
+}
+#levelTwoWrapper {
+	margin: 30px;
+	float: left;
+}
+#levelTwoWrapper div {
+	float: left;
+	margin: 0;
+	width: 70px;
+	height: 35px;
+	background-color: #cccccc;
+	position: relative;
+}
+#levelTwoWrapper div::before {
+	content: '';
+	position: absolute;
+	height: 5px;
+	background-color: rgba(0,0,0,0.15);
+	bottom: 0;
+	z-index: 2;
+	display: block;
+	width: 100%;
 }
