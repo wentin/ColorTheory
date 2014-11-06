@@ -515,6 +515,14 @@ THREE.Color.prototype = {
 
 	},
 
+	lerpHSL2: function ( color, alpha ) {
+		var h = color.getHSL().h,
+			s = color.getHSL().S,
+			l = color.getHSL().l;
+		this.offsetHSL((h - this.getHSL().h ) * alpha, (s - this.getHSL().s ) * alpha, (l - this.getHSL().l ) * alpha);
+		return this;
+
+	},
 	lerpHSL: function ( h, s, l, alpha ) {
 
 		this.offsetHSL((h - this.getHSL().h ) * alpha, (s - this.getHSL().s ) * alpha, (l - this.getHSL().l ) * alpha);

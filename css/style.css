@@ -1,52 +1,48 @@
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0;
-	padding: 0;
-}
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0; }
+
 .clr {
-	clear: both;
-}
-#levelOneWrapper {
-	margin: 30px;
-	float: left;
-}
-#levelOneWrapper div {
-	float: left;
-	margin: 0;
-	width: 70px;
-	height: 35px;
-	background-color: #cccccc;
-	position: relative;
-}
-#levelOneWrapper div::before {
-	content: '';
-	position: absolute;
-	height: 5px;
-	background-color: rgba(0,0,0,0.15);
-	bottom: 0;
-	z-index: 2;
-	display: block;
-	width: 100%;
-}
-#levelTwoWrapper {
-	margin: 30px;
-	float: left;
-}
-#levelTwoWrapper div {
-	float: left;
-	margin: 0;
-	width: 70px;
-	height: 35px;
-	background-color: #cccccc;
-	position: relative;
-}
-#levelTwoWrapper div::before {
-	content: '';
-	position: absolute;
-	height: 5px;
-	background-color: rgba(0,0,0,0.15);
-	bottom: 0;
-	z-index: 2;
-	display: block;
-	width: 100%;
-}
+  clear: both; }
+
+body > div {
+  margin: 30px;
+  float: left; }
+  body > div div {
+    float: left;
+    margin: 0;
+    width: 70px;
+    height: 35px;
+    background-color: #cccccc;
+    position: relative; }
+    body > div div::before {
+      content: '';
+      position: absolute;
+      height: 5px;
+      background-color: rgba(0, 0, 0, 0.15);
+      bottom: 0;
+      z-index: 2;
+      display: block;
+      width: 100%; }
+
+#levelFourWrapper,
+#levelFiveWrapper,
+#levelSixWrapper {
+  margin: 0;
+  margin-right: 2px; }
+  #levelFourWrapper div,
+  #levelFiveWrapper div,
+  #levelSixWrapper div {
+    float: none;
+    margin: 0;
+    width: 360px;
+    height: 46px;
+    background-color: #cccccc;
+    position: relative; }
+    #levelFourWrapper div::before,
+    #levelFiveWrapper div::before,
+    #levelSixWrapper div::before {
+      background-color: transparent; }
+
+/*# sourceMappingURL=style.css.map */
