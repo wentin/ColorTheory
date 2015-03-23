@@ -2,7 +2,7 @@ $(function(){
 	//addScalar, offsetHSL
 	// generateLevel(15);
 	generateLevelTwo(10,5);
-	generateLevelThree(10,10);
+	generateLevelThree(10,8);
 	generateLevelFour(10,4);
 	generateLevelFive(10,4);
 	generateLevelSix(10,4);
@@ -66,7 +66,7 @@ function generateLevel( i ) {
 		colorArray.push( startColor.clone().lerp(endColor, i/(numberOfBlocks-1) ) );
 	}
 	var randomColorArray = colorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 
 
 	for (i = 0; i < colorArray.length; i++) {
@@ -113,7 +113,7 @@ function generateLevelTwo( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec',k) );
@@ -151,7 +151,7 @@ function generateLevelThree( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec3',k) );
@@ -194,7 +194,7 @@ function generateLevelFour( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec4',k) );
@@ -236,7 +236,7 @@ function generateLevelFive( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 	console.log(randomColorArray);
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec5',k) );
@@ -280,7 +280,7 @@ function generateLevelSix( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 	console.log(randomColorArray);
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec6',k) );
