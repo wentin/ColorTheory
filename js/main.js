@@ -1,11 +1,11 @@
 $(function(){
 	//addScalar, offsetHSL
 	// generateLevel(15);
-	generateLevelTwo(10,5);
-	generateLevelThree(10,5);
-	generateLevelFour(10,4);
-	generateLevelFive(10,4);
-	generateLevelSix(10,4);
+	generateLevelTwo(12,12);
+	generateLevelThree(12,12);
+	// generateLevelFour(10,4);
+	// generateLevelFive(10,4);
+	// generateLevelSix(10,4);
 })
 	
 function createElement(id,i) {
@@ -57,7 +57,9 @@ function generateLevel( i ) {
 	var c=$("#levelOneWrapper");
 	var colorArray = [];
 	var startColor = new THREE.Color(Math.random(), Math.random(),Math.random());
-	var endColor = new THREE.Color(Math.random(), Math.random(),Math.random());
+	// var endColor = new THREE.Color(Math.random(), Math.random(),Math.random());
+
+	var	endColor = new THREE.Color(0x0DC0CB);
 
 	for (i = 0; i < numberOfBlocks; i++) { 
 		c.append( createElement(i) );
@@ -90,9 +92,9 @@ function generateLevelTwo( i, j ) {
 		colorArrayX = [],
 		colorArrayY = [],
 		totalColorArray = [],
-		// startColor0202 = new THREE.Color(0xDF0000),
+		startColor0202 = new THREE.Color(0x0DC0CB),
 		startColor0201 = new THREE.Color(Math.random(),Math.random(),Math.random());
-		startColor0202 = new THREE.Color(Math.random(),Math.random(),Math.random());
+		// startColor0202 = new THREE.Color(Math.random(),Math.random(),Math.random());
 
 	var startColor0202Hue = startColor0202.getHSL().h;
 	var startColor0202HueReversed = ( Math.random()/2 + 0.25 + startColor0202Hue ) % 1;
@@ -113,7 +115,7 @@ function generateLevelTwo( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	shuffle(randomColorArray);
+	// shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec',k) );
@@ -135,7 +137,8 @@ function generateLevelThree( i, j ) {
 		colorArrayY = [],
 		totalColorArray = [],
 		startColor0201 = new THREE.Color(Math.random(),Math.random(),Math.random()),
-		startColor0202 = new THREE.Color(Math.random(),Math.random(),Math.random());
+		// startColor0202 = new THREE.Color(Math.random(),Math.random(),Math.random());
+		startColor0202 = new THREE.Color(0x0DC0CB);
 	for (i = 0; i < numberOfBlocksX; i++) { 
 		colorArrayX.push( startColor0201.clone().lerp(startColor0202, i/(numberOfBlocksX-1) ) );
 		totalColorArray.push( startColor0201.clone().lerp(startColor0202, i/(numberOfBlocksX-1) ) );
@@ -151,7 +154,7 @@ function generateLevelThree( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	shuffle(randomColorArray);
+	// shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec3',k) );
