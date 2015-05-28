@@ -197,7 +197,7 @@ function generateLevelFour( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec4',k) );
@@ -239,7 +239,7 @@ function generateLevelFive( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 	console.log(randomColorArray);
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec5',k) );
@@ -283,19 +283,11 @@ function generateLevelSix( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 	console.log(randomColorArray);
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec6',k) );
 		$('#rec6'+k).css('background-color', randomColorArray[k].getStyle()).attr('data', randomColorArray[k].getHex() );
-	}
-    c.sortable({
-    	stop: function( event, ui ) {
-    		checkWin(totalColorArray, 'levelSixWrapper');
-    	}
-	});
-    c.disableSelection();
-}tHex() );
 	}
     c.sortable({
     	stop: function( event, ui ) {
