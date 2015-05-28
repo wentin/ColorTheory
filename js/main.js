@@ -1,19 +1,11 @@
 $(function(){
 	//addScalar, offsetHSL
 	// generateLevel(15);
-<<<<<<< HEAD
-	generateLevelTwo(10,5);
-	generateLevelThree(10,8);
-	generateLevelFour(10,4);
-	generateLevelFive(10,4);
-	generateLevelSix(10,4);
-=======
 	generateLevelTwo(12,12);
 	generateLevelThree(12,12);
 	// generateLevelFour(10,4);
 	// generateLevelFive(10,4);
 	// generateLevelSix(10,4);
->>>>>>> master
 })
 	
 function createElement(id,i) {
@@ -205,7 +197,7 @@ function generateLevelFour( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	shuffle(randomColorArray);
+	// shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec4',k) );
@@ -247,7 +239,7 @@ function generateLevelFive( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	shuffle(randomColorArray);
+	// shuffle(randomColorArray);
 	console.log(randomColorArray);
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec5',k) );
@@ -291,11 +283,19 @@ function generateLevelSix( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	shuffle(randomColorArray);
+	// shuffle(randomColorArray);
 	console.log(randomColorArray);
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec6',k) );
 		$('#rec6'+k).css('background-color', randomColorArray[k].getStyle()).attr('data', randomColorArray[k].getHex() );
+	}
+    c.sortable({
+    	stop: function( event, ui ) {
+    		checkWin(totalColorArray, 'levelSixWrapper');
+    	}
+	});
+    c.disableSelection();
+}tHex() );
 	}
     c.sortable({
     	stop: function( event, ui ) {
