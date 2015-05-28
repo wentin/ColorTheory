@@ -154,7 +154,7 @@ function generateLevelThree( i, j ) {
 	}
 
 	var randomColorArray = totalColorArray.slice();
-	// shuffle(randomColorArray);
+	shuffle(randomColorArray);
 
 	for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
 		c.append( createElement('rec3',k) );
