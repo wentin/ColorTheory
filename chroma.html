@@ -3,44 +3,79 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chroma JS</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/chroma.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 	<style>
-#wrapper div {
-	width: 100px;
-	height: 100px;
+body {
+	font-family: arial, sans-serif;
+	font-size: 16px;
+}
+.section {
+	float: left;
+	width: 100%;
+	margin-bottom: 80px;
+}
+.wrapper {
+	clear: both;
+}
+.wrapper div {
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+.wrapper span {
+	display: block;
+	float: left;
+	width: 240px;
+	line-height: 40px;
 }
 	</style>
 </head>
-<body>
-	<input type="color" name="color1" id="color1" value="#ff0000">
-	<input type="color" name="color2" id="color2" value="#00ff00">
-	<div id="wrapper"></div>
-	<script>
-function createElement(id,i) {
-    return $('<div>', { id: id + i});
-}
-	var startColor = chroma(document.getElementById('color1').value);
-	var endColor = chroma(document.getElementById('color2').value);
-	var num = 6;
-	var colorArray = [];
-	var c=$("#wrapper")
-	colorArray.push(startColor);
-	var colorScale = chroma.scale([startColor, endColor]);
-	for(var i=0; i<6; i++) {
-		var temp;
-		temp = colorScale(i/num);
-		colorArray.push(temp);
-	}
-	colorArray.push(endColor);
+<body ng-app="colorApp">
+	<div id="colorSpaceExample" class="section" ng-controller="colorSpaceCtrl">
+		<input type="color" id="startColor" ng-model="startColor">
+		<input type="color" id="endColor" ng-model="endColor">
+		<input type="range" id="colorNum" min="1" max="50" step="1" ng-model="num">
+		<div class="wrapper">	
+			<span>HCL color space interpolation</span>
+		    <div ng-repeat="color in colorArray"
+		    	ng-style="{'background-color': color}">
+		    </div>
+		</div>
+		<div class="wrapper">
+			<span>HSL color space interpolation</span>
+		    <div ng-repeat="color in colorArrayHSL"
+		    	ng-style="{'background-color': color}">
+		    </div>
+		</div>
+		<div class="wrapper">
+			<span>RGB color space interpolation</span>
+		    <div ng-repeat="color in colorArrayRGB"
+		    	ng-style="{'background-color': color}">
+		    </div>
+		</div>
+		<div class="wrapper">
+			<span>LAB color space interpolation</span>
+		    <div ng-repeat="color in colorArrayLAB"
+		    	ng-style="{'background-color': color}">
+		    </div>
+		</div>
+	</div>
 
-	console.log(startColor.hcl());
-	console.log(colorArray);
-
-	for (i = 0; i < colorArray.length; i++) {
-		c.append( createElement('rec',i) );
-		$('#rec'+i).css('background-color', colorArray[i].hex() );
-	}
-	</script>
+	<div id="colorPaletteExample" class="section" ng-controller="colorPaletteCtrl">
+		<input type="color" id="muteColor" ng-model="muteColor">
+		<input type="range" id="anchorMuteNum" min="1" max="50" step="1" ng-model="anchorMuteNum">
+		<input type="color" id="anchorColor" ng-model="anchorColor">
+		<input type="range" id="anchorAccentNum" min="1" max="50" step="1" ng-model="anchorAccentNum">
+		<input type="color" id="accentColor" ng-model="accentColor">
+		<div class="wrapper">
+			<span>Color Palette</span>
+		    <div ng-repeat="color in colorArrayAnchor"
+		    	ng-style="{'background-color': color}">
+		    </div>
+		</div>
+	</div>
 </body>
 </html>

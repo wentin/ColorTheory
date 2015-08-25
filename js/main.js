@@ -3,9 +3,9 @@ $(function(){
 	// generateLevel(15);
 	generateLevelTwo(12,12);
 	generateLevelThree(12,12);
-	// generateLevelFour(10,4);
-	// generateLevelFive(10,4);
-	// generateLevelSix(10,4);
+	generateLevelFour(10,4);
+	generateLevelFive(10,4);
+	generateLevelSix(10,4);
 })
 	
 function createElement(id,i) {
