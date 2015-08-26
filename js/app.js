@@ -47,7 +47,7 @@ app.controller('colorPaletteCtrl', function($scope) {
 	$scope.$watch('[anchorColor, anchorMuteNum, anchorAccentNum]', function () {
 		// lch.h ranges from 0 to 360
 		var tempAccentColor = chroma($scope.anchorColor);
-		var targetHue = ( tempAccentColor.get('lch.h') + 90 + 90 * Math.random() ) % 360;
+		var targetHue = ( tempAccentColor.get('lch.h') + 135 + 90 * Math.random() ) % 360;
 		tempAccentColor.set('lch.h', targetHue);
 		// generate accentColor based on anchorColor, an opposite hue with randomness and same c and l. based on hcl
 		$scope.accentColor = tempAccentColor.hex();
