@@ -6,43 +6,24 @@ body {
 .clr {
   clear: both; }
 
-body > div {
-  margin: 0;
-  float: left; }
-  body > div div {
-    float: left;
+#game {
+  margin: 100px auto;
+  text-align: center; }
+  #game div {
+    display: inline-block;
     margin: 0;
     width: 60px;
-    height: 35px;
+    height: 60px;
     background-color: #cccccc;
     position: relative; }
-    body > div div::before {
+    #game div::before {
       content: '';
       position: absolute;
-      height: 5px;
+      height: 10px;
       background-color: rgba(0, 0, 0, 0.15);
       bottom: 0;
       z-index: 2;
       display: block;
       width: 100%; }
-
-#levelFourWrapper,
-#levelFiveWrapper,
-#levelSixWrapper {
-  margin: 0;
-  margin-right: 2px; }
-  #levelFourWrapper div,
-  #levelFiveWrapper div,
-  #levelSixWrapper div {
-    float: none;
-    margin: 0;
-    width: 360px;
-    height: 46px;
-    background-color: #cccccc;
-    position: relative; }
-    #levelFourWrapper div::before,
-    #levelFiveWrapper div::before,
-    #levelSixWrapper div::before {
-      background-color: transparent; }
 
 /*# sourceMappingURL=style.css.map */
