@@ -1,3 +1,3 @@
-Color Generator 01
+Color Generator 02
 =====
-It will pick 2 color and generate colors between them.
+randomly pick one color, and generate gradient based on hue/saturation/lightness
