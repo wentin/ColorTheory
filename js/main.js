@@ -52,45 +52,34 @@ function checkWin(colorArray, levelID) {
    i － i+j will be between the second contrasting color and its hsl－constrasting color
 */
 function generateLevel(i, j) {
-    var c = $("#game"),
-        numberOfBlocksX = i,
-        numberOfBlocksY = j,
-        colorArrayX = [],
-        colorArrayY = [],
-        totalColorArray = [],
-        startColor0202 = new THREE.Color(0x0DC0CB),
-        startColor0201 = new THREE.Color(Math.random(), Math.random(), Math.random());
-    // startColor0202 = new THREE.Color(Math.random(),Math.random(),Math.random());
+	var c = $("#game");
 
-    var startColor0202Hue = startColor0202.getHSL().h;
-    var startColor0202HueReversed = (Math.random() / 2 + 0.25 + startColor0202Hue) % 1;
+	var colorNum1 = i;
+	var colorNum2 = j;
+	var colorNumTotal = colorNum1 + colorNum2;
+	var color1 = new THREE.Color(Math.random(), Math.random(), Math.random());
+	var color2 = new THREE.Color(Math.random(), Math.random(), Math.random());
+	var colorArray = [];
 
-    startColor0201.offsetHSL((startColor0202HueReversed - startColor0201.getHSL().h), 0, 0);
+  for (i = 0; i < colorNumTotal; i++) {
+  	var tempColor = color1.clone().lerp(color2, i / (colorNumTotal - 1))
+    colorArray.push(tempColor);
+  }
 
-    for (i = 0; i < numberOfBlocksX; i++) {
-        colorArrayX.push(startColor0201.clone().lerp(startColor0202, i / (numberOfBlocksX - 1)));
-        totalColorArray.push(startColor0201.clone().lerp(startColor0202, i / (numberOfBlocksX - 1)));
+  var randomColorArray = colorArray;
+  // shuffle(randomColorArray);
+
+	for (k = 0; k < colorNumTotal; k++) {
+    $("#game").append(createElement('rec', k));
+    $('#rec' + k)
+    	.css('background-color', randomColorArray[k].getStyle())
+    	.attr('data', randomColorArray[k].getHex());
+  }
+
+  c.sortable({
+    stop: function(event, ui) {
+      checkWin(colorArray, 'game');
     }
-    var ramdomH = (Math.random() / 2 + 0.25 + startColor0202.getHSL().h) % 1;
-    var randomS = (Math.random() / 2 + 0.25 + startColor0202.getHSL().s) % 1;
-    var randomL = (Math.random() / 2 + 0.25 + startColor0202.getHSL().l) % 1;
-    for (j = 0; j < numberOfBlocksY; j++) {
-        var temp = startColor0202.clone().lerpHSL(startColor0202.getHSL().h, randomS, randomL, (j + 1) / numberOfBlocksY);
-        colorArrayY.push(temp);
-        totalColorArray.push(temp);
-    }
-
-    var randomColorArray = totalColorArray.slice();
-    // shuffle(randomColorArray);
-
-    for (k = 0; k < (numberOfBlocksX + numberOfBlocksY); k++) {
-        c.append(createElement('rec', k));
-        $('#rec' + k).css('background-color', randomColorArray[k].getStyle()).attr('data', randomColorArray[k].getHex());
-    }
-    c.sortable({
-        stop: function(event, ui) {
-            checkWin(totalColorArray, 'levelTwoWrapper');
-        }
-    });
-    c.disableSelection();
+  });
+  c.disableSelection();
 }
