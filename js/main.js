@@ -1,5 +1,5 @@
 $(function() {
-	generateLevel(10,6);
+	generateLevel(6,4);
 })
 
 var lerpHSL = function(color1, color2, alpha) {
@@ -19,9 +19,54 @@ var lerpHSL = function(color1, color2, alpha) {
 	return color;
 }
 
+var checkWin = function(colorArray) {
+	var colorArray = colorArray;
+	var win = true;
+
+	for (i = 0; i < colorArray.length; i++) {
+		var recColorData = $('#game div').eq(i).attr('data');
+		if ( recColorData != colorArray[i].getHex() ){
+			win = false;
+		}
+		console.log(recColorData, colorArray[i].getHex(), win);
+	}
+
+	var reversewin = true;
+	for (i = 0; i < colorArray.length; i++) {
+		var recColorData = $('#game div').eq(colorArray.length-i-1).attr('data');
+		if ( recColorData != colorArray[i].getHex() ){
+			reversewin = false;
+		}
+	}
+
+	if(win||reversewin) {
+		alert('You win!!!');
+	}
+}
+
+var shuffle = function(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 function generateLevel(colorTotal1, colorTotal2) {
 	var colorTotal1 = colorTotal1;
 	var colorTotal2 = colorTotal2;
+	var colorArray = [];
 
 	// var color1 = new THREE.Color(Math.random(), Math.random(), Math.random());
 	// generate random number that is saturated and not so dark
@@ -43,9 +88,10 @@ function generateLevel(colorTotal1, colorTotal2) {
 
 	for (i = 0; i < colorTotal1; i++) {
   	var tempColor = lerpHSL(color1, color2, i / (colorTotal1 - 1));
-		var newRectangle = $("<div></div>")
-												.css('background-color', tempColor.getStyle());
-    $("#game").append(newRectangle);
+		// var newRectangle = $("<div></div>")
+		// 										.css('background-color', tempColor.getStyle());
+  	//   $("#game").append(newRectangle);
+  	colorArray.push(tempColor);
   }
 
   var color2Hue = color2.getHSL().h;
@@ -57,8 +103,26 @@ function generateLevel(colorTotal1, colorTotal2) {
 	for (j = 1; j < colorTotal2; j++) {
   	// var tempColor = color2.clone().lerp(color3, j / (colorTotal2 - 1));
   	var tempColor = lerpHSL(color2, color3, j / (colorTotal2 - 1));
-		var newRectangle = $("<div></div>")
-												.css('background-color', tempColor.getStyle());
+		// var newRectangle = $("<div></div>")
+		// 										.css('background-color', tempColor.getStyle());
+    // $("#game").append(newRectangle);
+  	colorArray.push(tempColor);
+  }
+
+  var randomColorArray = colorArray.slice();
+	shuffle(randomColorArray);
+
+
+  for (k = 0; k < randomColorArray.length; k++) {
+  	var newRectangle = $("<div></div>")
+												.css('background-color', randomColorArray[k].getStyle())
+												.attr('data', randomColorArray[k].getHex());
     $("#game").append(newRectangle);
   }
+
+  $("#game").sortable({
+    	stop: function( event, ui ) {
+    		checkWin(colorArray);
+    	}
+	});
 }
