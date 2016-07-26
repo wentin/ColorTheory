@@ -1,5 +1,5 @@
 $(function() {
-    generateLevel(8);
+	generateLevel(6);
 })
 
 function generateLevel(colorTotal) {
