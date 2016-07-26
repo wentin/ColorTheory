@@ -1,29 +1,11 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0; }
-
-.clr {
-  clear: both; }
-
 #game {
   margin: 100px auto;
-  text-align: center; }
-  #game div {
-    display: inline-block;
-    margin: 0;
-    width: 60px;
-    height: 60px;
-    background-color: #cccccc;
-    position: relative; }
-    #game div::before {
-      content: '';
-      position: absolute;
-      height: 10px;
-      background-color: rgba(0, 0, 0, 0.15);
-      bottom: 0;
-      z-index: 2;
-      display: block;
-      width: 100%; }
-
-/*# sourceMappingURL=style.css.map */
+  text-align: center;
+}
+#game div {
+	display: inline-block;
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #cccccc;
+}
