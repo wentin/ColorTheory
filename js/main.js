@@ -19,7 +19,6 @@ function generateLevel(colorTotal) {
 	// var color2Hue = color1Hue > 0.5?(color1Hue-0.5):(color1Hue+0.5)
 	var color2 = color1.clone().setHSL(color2Hue, color1Saturation, color1Lightness);
 
-	console.log(color2.getHSL());
 	for (k = 0; k < colorTotal; k++) {
   	var tempColor = color1.clone().lerp(color2, k / (colorTotal - 1));
 		var newRectangle = $("<div></div>")
