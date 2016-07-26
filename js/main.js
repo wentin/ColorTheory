@@ -21,7 +21,7 @@ function generateLevel(colorTotal1, colorTotal2) {
 	var color2 = color1.clone().setHSL(color2Hue, color1Saturation, color1Lightness);
 
 	for (i = 0; i < colorTotal1; i++) {
-  	var tempColor = color1.clone().lerp(color2, i / (colorTotal1 - 1));
+  	var tempColor = color1.clone().lerpHSL(color2, i / (colorTotal1 - 1));
 		var newRectangle = $("<div></div>")
 												.css('background-color', tempColor.getStyle());
     $("#game").append(newRectangle);
@@ -33,7 +33,7 @@ function generateLevel(colorTotal1, colorTotal2) {
   var color3 = color2.clone().setHSL(color2Hue, color2Saturation, 0.2);
 
 	for (j = 1; j < colorTotal2; j++) {
-  	var tempColor = color2.clone().lerp(color3, j / (colorTotal2 - 1));
+  	var tempColor = color2.clone().lerpHSL(color3, j / (colorTotal2 - 1));
 		var newRectangle = $("<div></div>")
 												.css('background-color', tempColor.getStyle());
     $("#game").append(newRectangle);
